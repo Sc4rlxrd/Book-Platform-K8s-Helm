@@ -1,0 +1,6 @@
+apiVersion: v2
+name: mongo
+description: Helm chart para o banco de dados MongoDB (DLQ)
+type: application
+version: 0.1.0
+appVersion: "7.0.0"

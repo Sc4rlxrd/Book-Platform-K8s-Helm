@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: "mongo"
+  tag: "7.0"
+  pullPolicy: IfNotPresent
+
+
+mongodb:
+  rootUser: "admin"
+  rootPassword: "123"
+  database: "book_dlq_db"
+
+service:
+  type: ClusterIP
+  port: 27017
+
+
+persistence:
+  size: "1Gi"
+  accessMode: "ReadWriteOnce"
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "300m"
