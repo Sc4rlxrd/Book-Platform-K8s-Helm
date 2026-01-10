@@ -1,0 +1,18 @@
+ingress:
+  className: "nginx"
+  hosts:
+    app: "book.local"
+    rabbit: "rabbit.local"
+    grafana: "grafana.local"
+
+# Nomes dos serviços (devem bater com o nome que o Helm gera para os outros charts)
+services:
+  app:
+    name: "book-app"
+    port: 8080
+  rabbitmq:
+    name: "rabbitmq"
+    port: 15672
+  grafana:
+    name: "grafana"
+    port: 3000

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: book-ingress
+description: Helm chart para gerenciar as rotas de entrada (Ingress) da plataforma
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

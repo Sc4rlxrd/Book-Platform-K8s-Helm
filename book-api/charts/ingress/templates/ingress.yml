@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "book-ingress.fullname" . }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.className | quote }}
+spec:
+  ingressClassName: {{ .Values.ingress.className | quote }}
+  rules:
+    - host: {{ .Values.ingress.hosts.app | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.services.app.name | quote }}
+                port:
+                  number: {{ .Values.services.app.port }}
+
+    - host: {{ .Values.ingress.hosts.rabbit | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.services.rabbitmq.name | quote }}
+                port:
+                  number: {{ .Values.services.rabbitmq.port }}
+
+    - host: {{ .Values.ingress.hosts.grafana | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.services.grafana.name | quote }}
+                port:
+                  number: {{ .Values.services.grafana.port }}
