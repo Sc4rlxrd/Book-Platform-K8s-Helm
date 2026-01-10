@@ -1,0 +1,6 @@
+apiVersion: v2
+name: postgres
+description: Helm chart para o banco de dados Postgres da aplicação Book
+type: application
+version: 0.1.0
+appVersion: "15.0.0"
