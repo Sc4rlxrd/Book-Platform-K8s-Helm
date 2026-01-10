@@ -1,0 +1,34 @@
+replicaCount: 1
+
+image:
+  repository: bookdlq
+  pullPolicy: IfNotPresent
+  tag: "v1"
+
+service:
+  type: ClusterIP
+  port: 8082
+
+
+config:
+  mongoHost: "db-dlq-book"
+  mongoPort: "27017"
+  mongoDatabase: "book_dlq_db"
+  serverPort: "8082"
+  rabbitmqHost: "rabbitmq"
+  rabbitmqPort: "5672"
+
+
+secret:
+  mongoUser: "admin"
+  mongoPass: "123"
+  rabbitUser: "guest"
+  rabbitPass: "guest"
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "100m"
+  limits:
+    memory: "768Mi"
+    cpu: "500m"
