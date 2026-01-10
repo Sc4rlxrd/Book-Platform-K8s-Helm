@@ -1,43 +1,35 @@
 apiVersion: v2
-name: book-api
-description: Book Platform - Umbrella Chart
+name: book-platform
+description: Umbrella Chart para a Plataforma Completa Book
 type: application
-version: 0.1.0
+version: 1.0.0
 appVersion: "1.0.0"
 
 dependencies:
-  - name: app
-    version: 0.1.0
-    repository: "file://charts/app"
-
-  - name: app-dlq
-    version: 0.1.0
-    repository: "file://charts/app-dlq"
-
   - name: postgres
     version: 0.1.0
     repository: "file://charts/postgres"
-
-  - name: redis
-    version: 0.1.0
-    repository: "file://charts/redis"
-
-  - name: rabbitmq
-    version: 0.1.0
-    repository: "file://charts/rabbitmq"
-
   - name: mongo
     version: 0.1.0
     repository: "file://charts/mongo"
-
-  - name: grafana
+  - name: rabbitmq
     version: 0.1.0
-    repository: "file://charts/grafana"
-
+    repository: "file://charts/rabbit"
+  - name: redis
+    version: 0.1.0
+    repository: "file://charts/redis"
+  - name: app-book
+    version: 0.1.0
+    repository: "file://charts/app"
+  - name: app-dlq
+    version: 0.1.0
+    repository: "file://charts/app-dlq"
   - name: prometheus
     version: 0.1.0
     repository: "file://charts/prometheus"
-
-  - name: ingress
+  - name: grafana
+    version: 0.1.0
+    repository: "file://charts/grafana"
+  - name: book-ingress
     version: 0.1.0
     repository: "file://charts/ingress"
