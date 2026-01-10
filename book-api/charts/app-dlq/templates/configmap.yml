@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "app-dlq.fullname" . }}-config
+data:
+  SPRING_DATA_MONGODB_HOST: {{ .Values.config.mongoHost | quote }}
+  SPRING_DATA_MONGODB_PORT: {{ .Values.config.mongoPort | quote }}
+  SPRING_DATA_MONGODB_DATABASE: {{ .Values.config.mongoDatabase | quote }}
+  SERVER_PORT: {{ .Values.config.serverPort | quote }}
+  SPRING_RABBITMQ_HOST: {{ .Values.config.rabbitmqHost | quote }}
+  SPRING_RABBITMQ_PORT: {{ .Values.config.rabbitmqPort | quote }}
