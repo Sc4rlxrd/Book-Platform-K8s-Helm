@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: book-app
+  template:
+    metadata:
+      labels:
+        app: book-app
+    spec:
+      containers:
+        - name: book-app
+          image: book:v2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "100m"
+            limits:
+              memory: "768Mi"   # Teto máximo (se passar disso, o K8s reinicia o Pod)
+              cpu: "500m"
+          envFrom:
+            - configMapRef:
+                name: book-config
+            - secretRef:
+                name: book-secret
