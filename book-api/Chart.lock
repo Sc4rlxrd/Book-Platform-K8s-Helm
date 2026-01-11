@@ -1,0 +1,30 @@
+dependencies:
+- name: postgres
+  repository: file://charts/postgres
+  version: 0.1.0
+- name: mongo
+  repository: file://charts/mongo
+  version: 0.1.0
+- name: rabbitmq
+  repository: file://charts/rabbitmq
+  version: 0.1.0
+- name: redis
+  repository: file://charts/redis
+  version: 0.1.0
+- name: app-book
+  repository: file://charts/app-book
+  version: 0.1.0
+- name: app-dlq
+  repository: file://charts/app-dlq
+  version: 0.1.0
+- name: prometheus
+  repository: file://charts/prometheus
+  version: 0.1.0
+- name: grafana
+  repository: file://charts/grafana
+  version: 0.1.0
+- name: book-ingress
+  repository: file://charts/book-ingress
+  version: 0.1.0
+digest: sha256:7122980f2da4a45c733183d4b31a86d6f8ffbe427d0ad846b445c83d2501ad8e
+generated: "2026-01-11T16:40:30.518826319-03:00"
