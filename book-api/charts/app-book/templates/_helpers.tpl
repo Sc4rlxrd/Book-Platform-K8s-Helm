@@ -1,7 +1,3 @@
-{{- define "app.name" -}}
-app
-{{- end }}
-
-{{- define "app.fullname" -}}
-{{ .Release.Name }}-{{ include "app.name" . }}
+{{- define "app-book.fullname" -}}
+{{ .Release.Name }}-app-book
 {{- end }}
