@@ -14,13 +14,13 @@ dependencies:
     repository: "file://charts/mongo"
   - name: rabbitmq
     version: 0.1.0
-    repository: "file://charts/rabbit"
+    repository: "file://charts/rabbitmq"
   - name: redis
     version: 0.1.0
     repository: "file://charts/redis"
   - name: app-book
     version: 0.1.0
-    repository: "file://charts/app"
+    repository: "file://charts/app-book"
   - name: app-dlq
     version: 0.1.0
     repository: "file://charts/app-dlq"
@@ -32,4 +32,4 @@ dependencies:
     repository: "file://charts/grafana"
   - name: book-ingress
     version: 0.1.0
-    repository: "file://charts/ingress"
+    repository: "file://charts/book-ingress"
