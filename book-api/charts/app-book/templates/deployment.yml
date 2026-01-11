@@ -1,32 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "app.fullname" . }}
+  name: {{ include "app-book.fullname" . }}
+  labels:
+    {{- include "app-book.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "app.name" . }}
+      {{- include "app-book.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: {{ include "app.name" . }}
+        {{- include "app-book.selectorLabels" . | nindent 8 }}
     spec:
       containers:
-        - name: {{ include "app.name" . }}
+        - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.port }}
-          resources:
-            requests:
-              memory: {{ .Values.resources.requests.memory | quote }}
-              cpu: {{ .Values.resources.requests.cpu | quote }}
-            limits:
-              memory: {{ .Values.resources.limits.memory | quote }}
-              cpu: {{ .Values.resources.limits.cpu | quote }}
           envFrom:
             - configMapRef:
-                name: {{ include "app.fullname" . }}-config
+                name: {{ include "app-book.fullname" . }}-config
             - secretRef:
-                name: {{ include "app.fullname" . }}-secret
+                name: {{ include "app-book.fullname" . }}-secret
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
