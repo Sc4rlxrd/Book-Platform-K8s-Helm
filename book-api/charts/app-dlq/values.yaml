@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: bookdlq
-  pullPolicy: IfNotPresent
+  repository: sc4rlxrd/bookdlq
   tag: "v1"
+  pullPolicy: Always
 
 service:
   type: ClusterIP
@@ -11,11 +11,11 @@ service:
 
 
 config:
-  mongoHost: "db-dlq-book"
+  mongoHost: "book-system-mongo"
   mongoPort: "27017"
   mongoDatabase: "book_dlq_db"
   serverPort: "8082"
-  rabbitmqHost: "rabbitmq"
+  rabbitmqHost: "book-system-rabbitmq"
   rabbitmqPort: "5672"
 
 
