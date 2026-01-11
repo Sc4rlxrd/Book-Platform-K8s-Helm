@@ -8,7 +8,7 @@ ingress:
 # Nomes dos serviços (devem bater com o nome que o Helm gera para os outros charts)
 services:
   app:
-    name: "book-app"
+    name: "app-book"
     port: 8080
   rabbitmq:
     name: "rabbitmq"

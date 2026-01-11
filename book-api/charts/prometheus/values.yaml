@@ -14,7 +14,7 @@ config:
   scrapeInterval: "5s"
   evaluationInterval: "5s"
 
-  bookAppTarget: "book-app:8080"
+  bookAppTarget: "book-system-app-book:8080"
   adminUser: "admin"
   adminPass: "admin"
 

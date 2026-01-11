@@ -1,74 +1,18 @@
-# Configurações globais e da Aplicação Principal
-app:
-  replicaCount: 2
-  image: book:v2
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "100m"
-    limits:
-      memory: "768Mi"
-      cpu: "500m"
+app-book:
+  config:
+    datasourceUrl: "jdbc:postgresql://book-system-postgres:5432/bookdb"
+    rabbitmqHost: "book-system-rabbitmq"
+    redisHost: "book-system-redis"
+  replicaCount: 3
+book-ingress:
+  services:
+    app:
+      name: "book-system-app-book"
+    rabbitmq:
+      name: "book-system-rabbitmq"
+    grafana:
+      name: "book-system-grafana"
 
-# App de Dead Letter Queue
-dlqApp:
-  image: bookdlq:v1
-  resources:
-    requests:
-      memory: "512Mi"
-    limits:
-      memory: "768Mi"
-
-# Banco de Dados Postgres
 postgres:
-  image: postgres:15
-  storage: 1Gi
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "100m"
-    limits:
-      memory: "256Mi"
-      cpu: "300m"
-
-# Mensageria RabbitMQ
-rabbitmq:
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "300m"
-
-# Cache Redis
-redis:
-  resources:
-    requests:
-      memory: "64Mi"
-    limits:
-      memory: "128Mi"
-
-# Monitoramento Prometheus
-prometheus:
-  resources:
-    requests:
-      memory: "256Mi"
-    limits:
-      memory: "512Mi"
-mongo:
-  image: mongo:7.0
-  storage: 1Gi
-  resources:
-    requests:
-      memory: "256Mi"
-    limits:
-      memory: "512Mi"
-
-grafana:
-  storage: 2Gi
-  resources:
-    requests:
-      memory: "128Mi"
-    limits:
-      memory: "256Mi"
+  db:
+    name: "bookdb"
