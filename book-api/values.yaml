@@ -3,7 +3,6 @@ app-book:
     datasourceUrl: "jdbc:postgresql://book-system-postgres:5432/bookdb"
     rabbitmqHost: "book-system-rabbitmq"
     redisHost: "book-system-redis"
-  replicaCount: 3
 book-ingress:
   services:
     app:

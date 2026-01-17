@@ -5,7 +5,7 @@ replicaCount: 2
 image:
   repository: sc4rlxrd/book
   tag: "v2"
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 service:
   port: 8080
