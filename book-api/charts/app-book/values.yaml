@@ -4,7 +4,7 @@ replicaCount: 2
 
 image:
   repository: sc4rlxrd/book
-  tag: "v2"
+  tag: "v3"
   pullPolicy: IfNotPresent
 
 service:
