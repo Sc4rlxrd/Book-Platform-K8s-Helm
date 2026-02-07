@@ -31,10 +31,10 @@ def get_access_token():
         return None
 
 def run_api_tests(token):
-    if not os.path.exists("animes.json"):
-        print("Arquivo animes.json não encontrado na pasta.")
+    if not os.path.exists("person.json"):
+        print("Arquivo person.json não encontrado na pasta.")
         return
-    with open("animes.json", "r", encoding='utf-8') as f:
+    with open("person.json", "r", encoding='utf-8') as f:
         test_data = json.load(f)
     headers = {
         "Content-Type": "application/json",
