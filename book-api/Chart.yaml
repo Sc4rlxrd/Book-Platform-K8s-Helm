@@ -33,3 +33,6 @@ dependencies:
   - name: book-ingress
     version: 0.1.0
     repository: "file://charts/book-ingress"
+  - name: monitoring
+    version: 0.1.0
+    repository: "file://charts/monitoring"

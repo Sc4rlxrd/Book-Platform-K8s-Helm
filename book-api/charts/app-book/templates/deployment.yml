@@ -18,12 +18,15 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+
           ports:
             - containerPort: {{ .Values.service.port }}
+
           envFrom:
             - configMapRef:
                 name: {{ include "app-book.fullname" . }}-config
             - secretRef:
                 name: {{ include "app-book.fullname" . }}-secret
+
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

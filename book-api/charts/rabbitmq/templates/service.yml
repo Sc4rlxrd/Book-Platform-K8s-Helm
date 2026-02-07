@@ -15,5 +15,9 @@ spec:
       targetPort: {{ .Values.service.managementPort }}
       protocol: TCP
       name: management
+    - port: {{ .Values.service.metricsPort }}
+      targetPort: {{ .Values.service.metricsPort }}
+      name: metrics
+      protocol: TCP
   selector:
     {{- include "rabbitmq.selectorLabels" . | nindent 4 }}

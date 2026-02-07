@@ -6,3 +6,5 @@ data:
   SPRING_DATASOURCE_URL: {{ .Values.config.datasourceUrl | quote }}
   SPRING_RABBITMQ_HOST: {{ .Values.config.rabbitmqHost | quote }}
   SPRING_REDIS_HOST: {{ .Values.config.redisHost | quote }}
+  API_SECURITY_RATE_LIMIT_LOGIN_ATTEMPTS: {{ .Values.config.rateLimit.loginAttempts | quote }}
+  API_SECURITY_RATE_LIMIT_LOGIN_TIMEOUT_SECONDS: {{ .Values.config.rateLimit.loginTimeoutSeconds | quote }}

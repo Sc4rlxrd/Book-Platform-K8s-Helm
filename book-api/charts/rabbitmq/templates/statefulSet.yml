@@ -24,5 +24,31 @@ spec:
               containerPort: {{ .Values.service.amqpPort }}
             - name: management
               containerPort: {{ .Values.service.managementPort }}
+            - name: metrics
+              containerPort: {{ .Values.service.metricsPort }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            {{- if .Values.persistence.enabled }}
+            - name: data
+              mountPath: {{ .Values.persistence.mountPath }}
+            {{- end }}
+            - name: plugins
+              mountPath: /etc/rabbitmq/enabled_plugins
+              subPath: enabled_plugins
+      volumes:
+        - name: plugins
+          configMap:
+            name: {{ include "rabbitmq.fullname" . }}-plugins
+
+{{- if .Values.persistence.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - {{ .Values.persistence.accessMode }}
+        resources:
+          requests:
+            storage: {{ .Values.persistence.size }}
+{{- end }}
