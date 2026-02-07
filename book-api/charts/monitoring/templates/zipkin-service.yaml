@@ -1,0 +1,14 @@
+{{- if .Values.zipkin.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: zipkin
+  namespace: {{ .Values.namespace }}
+spec:
+  type: {{ .Values.zipkin.service.type }}
+  selector:
+    app: zipkin
+  ports:
+    - port: {{ .Values.zipkin.service.port }}
+      targetPort: {{ .Values.zipkin.service.port }}
+{{- end }}

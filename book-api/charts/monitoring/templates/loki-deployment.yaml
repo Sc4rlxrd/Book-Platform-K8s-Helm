@@ -1,0 +1,32 @@
+{{- if .Values.loki.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loki
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.loki.replicaCount }}
+  selector:
+    matchLabels:
+      app: loki
+  template:
+    metadata:
+      labels:
+        app: loki
+    spec:
+      containers:
+        - name: loki
+          image: "{{ .Values.loki.image.repository }}:{{ .Values.loki.image.tag }}"
+          imagePullPolicy: {{ .Values.loki.image.pullPolicy }}
+          args:
+            - -config.file=/etc/loki/local-config.yaml
+          ports:
+            - containerPort: {{ .Values.loki.service.port }}
+          volumeMounts:
+            - name: loki-data
+              mountPath: {{ .Values.loki.persistence.mountPath }}
+      volumes:
+        - name: loki-data
+          persistentVolumeClaim:
+            claimName: loki-data
+{{- end }}

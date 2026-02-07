@@ -1,0 +1,45 @@
+{{- if .Values.promtail.enabled }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: promtail
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: promtail
+  template:
+    metadata:
+      labels:
+        app: promtail
+    spec:
+      serviceAccountName: promtail
+      containers:
+        - name: promtail
+          image: "{{ .Values.promtail.image.repository }}:{{ .Values.promtail.image.tag }}"
+          imagePullPolicy: {{ .Values.promtail.image.pullPolicy }}
+          args:
+            - -config.file=/etc/promtail/promtail.yaml
+          volumeMounts:
+            - name: config
+              mountPath: /etc/promtail
+            - name: containers
+              mountPath: /var/log/containers
+            - name: pods
+              mountPath: /var/log/pods
+            - name: varlog
+              mountPath: /var/log
+      volumes:
+        - name: config
+          configMap:
+            name: promtail-config
+        - name: containers
+          hostPath:
+            path: /var/log/containers
+        - name: pods
+          hostPath:
+            path: /var/log/pods
+        - name: varlog
+          hostPath:
+            path: /var/log
+{{- end }}
